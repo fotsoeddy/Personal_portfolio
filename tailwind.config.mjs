@@ -14,6 +14,7 @@ const config = {
         },
       },
     },
+    darkMode: 'selector',
     plugins: [],
   };
   

@@ -48,7 +48,7 @@ const Contact = () => {
 
     </div>
     <textarea rows="6" placeholder='Enter Your Message' required  
-      className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white mb-6'name='message'/>
+      className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white mb-6'name='message '/>
 
     <button type="Submit" 
     className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500'>
