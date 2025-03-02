@@ -7,9 +7,21 @@ const Footer = () => {
     <div className='mt-20'>
       <div className='text-center'>
         <Image src={assets.logo} alt='' className='w-30 mx-auto mb-2' />
+      
+      <div className='flex  items-center w-max gap-2 mx-auto'>
+      <Image src={assets.mail_icon} alt='' className='w-6' /> Fotsoeddysteve@gmail.com
+
       </div>
-      <div>
-        
+      </div>
+
+      <div className='texr-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6 '>
+        <p>@ 2025 Fotso Eddy Steve. All right reserved</p>
+        <ul className='flex items-center gap-10 justify-center mt-10 sm:mt-4'>
+          <li><a target='_blank' href="https://instagram.com/maxsenderman1"> instragm</a></li>
+          <li><a target='_blank' href="https://instagram.com/maxsenderman1"> Github</a></li>
+          <li><a target='_blank' href="https://instagram.com/maxsenderman1"> Linkdln</a></li>
+
+        </ul>
       </div>
     </div>
   )
