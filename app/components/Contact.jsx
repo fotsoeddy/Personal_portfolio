@@ -2,7 +2,7 @@ import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
-const Contact = () => {
+const Contact = ({isDarkMode}) => {
 
   const [result, setResult] = useState("");
 
@@ -30,8 +30,13 @@ const Contact = () => {
   return (
 <div
   id="contact"
-  className="w-full px-[12%] py-10 scroll-mt-20 bg-no-repeat bg-center bg-cover"
-  style={{ backgroundImage: "url('/footer-bg-color.png')" }}
+  className="w-full px-[12%] py-10 scroll-mt-20 bg-no-repeat bg-center bg-cover "
+  style={{
+    backgroundImage: isDarkMode
+      ? "none"
+      : "url('/footer-bg-color.png')",
+    backgroundSize: "90% auto",
+  }}  
 >
   <h4 className="text-center mb-2 text-lg font-Ovo">Connect With Me</h4>
   <h2 className="text-center text-5xl font-Ovo">Get In Touch</h2>
@@ -41,17 +46,17 @@ const Contact = () => {
   <form onSubmit={onSubmit} className='max-w-2xl mx-auto' >
     <div className='grid grid-cols-auto gap-6 mt-10 mb-8'>
       <input type="text" placeholder='Enter Your Name' required 
-      className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white' name='name' />
+      className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white dark:bg-darkHover/30 dark:border-white/90 ' name='name' />
       <input type="email" placeholder='Enter Your Email' required 
-            className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white' name='email'/>
+            className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white dark:bg-darkHover/30 dark:border-white/90' name='email'/>
 
 
     </div>
     <textarea rows="6" placeholder='Enter Your Message' required  
-      className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white mb-6'name='message '/>
+      className='w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md  bg-white mb-6 dark:bg-darkHover/30 dark:border-white/90'name='message '/>
 
     <button type="Submit" 
-    className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500'>
+    className='py-3 px-8 w-max flex items-center justify-between gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover'>
       Submit Now <Image src={assets.right_arrow_white} alt='' 
       className='w-4' /></button>
 
