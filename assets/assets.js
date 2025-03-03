@@ -43,6 +43,10 @@ import github_icon_black from './github_icon_black.png';
 import linkedin_icon_black from './linkedin_icon_black.png';
 import x_icon_black from './x_icon_black.png';
 import instagram_icon_black from './instagram_icon_black.png';
+import react_img from './react_img.png';
+import django from './django.png';
+import postgresql from './postgresql.png';
+import nextjs_img from './nextjs_img.png';
 
 
 export const assets = {
@@ -91,6 +95,10 @@ export const assets = {
     x_icon_black,
     instagram_icon_black,
     linkedin_icon_black,
+    react_img,
+    django,
+    nextjs_img,
+    postgresql
 };
 
 export const workData = [
@@ -130,5 +138,6 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git, assets.react_img, 
+    
 ];
