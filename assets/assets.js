@@ -106,23 +106,22 @@ export const workData = [
         title: 'Frontend project',
         description: 'Web Design',
         bgImage: '/work-1.png',
+        category: 'Website'
     },
     {
         title: 'Geo based app',
         description: 'Mobile App',
         bgImage: '/work-2.png',
+        category: 'Mobile'
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
+        title: 'AI-powered system',
+        description: 'Artificial Intelligence',
         bgImage: '/work-3.png',
+        category: 'AI'
     },
-    {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
-        bgImage: '/work-4.png',
-    },
-]
+];
+
 
 export const serviceData = [
     { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
