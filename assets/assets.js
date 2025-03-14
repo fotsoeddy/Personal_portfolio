@@ -106,19 +106,22 @@ export const workData = [
         title: 'Frontend project',
         description: 'Web Design',
         bgImage: '/work-1.png',
-        category: 'Website'
+        category: 'Website',
+        tech: [assets.vscode, assets.figma, assets.git]
     },
     {
         title: 'Geo based app',
         description: 'Mobile App',
         bgImage: '/work-2.png',
-        category: 'Mobile'
+        category: 'Mobile',
+        tech: [assets.react_img, assets.firebase, assets.mongodb]
     },
     {
         title: 'AI-powered system',
         description: 'Artificial Intelligence',
         bgImage: '/work-3.png',
-        category: 'AI'
+        category: 'AI',
+        tech: [assets.django, assets.postgresql, assets.nextjs_img]
     },
 ];
 
