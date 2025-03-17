@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const Header = ({isDarkMode}) => {
   return (
-    <div className='w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4'>
+    <div className='w-11/12 max-w-3xl  text-center mx-auto h-screen flex flex-col items-center justify-center gap-4'>
       {/* Profile Image */}
       <motion.div
         initial={{ scale: 0 }}
@@ -13,7 +13,7 @@ const Header = ({isDarkMode}) => {
         transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
       >
         <Image
-          src={assets.profile_img}
+          src={assets.profile2}
           alt='Profile Image'
           className='rounded-full w-40 h-40 bg-cover mt-20'
         />

@@ -60,7 +60,7 @@ const Work = ({ isDarkMode }) => {
             </motion.p>
             
             {/* Category Buttons */}
-            <div className='md:flex justify-center gap-4 mb-10 overflow-x-auto md:overflow-visible scrollbar-hide'>
+            <div className='md:flex justify-center gap-2 mb-10 overflow-x-auto md:overflow-visible scrollbar-hide'>
                 <div className='flex gap-4 w-max md:w-auto mx-4 md:mx-0 pb-2 md:pb-0'>
                     {categories.map((category) => (
                         <button 

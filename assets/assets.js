@@ -47,9 +47,11 @@ import react_img from './react_img.png';
 import django from './django.png';
 import postgresql from './postgresql.png';
 import nextjs_img from './nextjs_img.png';
+import profile2 from './profile2.jpeg';
 
 
 export const assets = {
+    profile2,
     user_image,
     code_icon,
     code_icon_dark,
