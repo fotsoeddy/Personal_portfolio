@@ -8,7 +8,8 @@ const categories = ['All', 'Mobile', 'Website', 'Full Stack', 'SEO', 'AI'];
 const Work = ({ isDarkMode }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [slidesToShow, setSlidesToShow] = useState(3); // Default: 3 slides on desktop
+  const [slidesToShow, setSlidesToShow] = useState(3); // Default: 3 slides
+  const [isClient, setIsClient] = useState(false); // Track client-side rendering
   const carouselRef = useRef(null);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
@@ -19,8 +20,15 @@ const Work = ({ isDarkMode }) => {
       ? workData
       : workData.filter((project) => project.category === selectedCategory);
 
-  // Update slidesToShow based on window width
+  // Set isClient to true on mount
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Update slidesToShow based on window width (client-side only)
+  useEffect(() => {
+    if (!isClient) return; // Skip on server
+
     const updateSlidesToShow = () => {
       if (window.innerWidth < 640) {
         setSlidesToShow(1); // Mobile
@@ -33,7 +41,7 @@ const Work = ({ isDarkMode }) => {
     updateSlidesToShow();
     window.addEventListener('resize', updateSlidesToShow);
     return () => window.removeEventListener('resize', updateSlidesToShow);
-  }, []);
+  }, [isClient]);
 
   // Reset currentIndex when category changes
   useEffect(() => {
@@ -67,6 +75,14 @@ const Work = ({ isDarkMode }) => {
   // Handle dot click
   const handleDotClick = (index) => {
     setCurrentIndex(index);
+  };
+
+  // Compute drag constraints dynamically
+  const getDragConstraints = () => {
+    if (!isClient) return { left: 0, right: 0 }; // Fallback for server
+    const slideWidth = (window.innerWidth * (100 / slidesToShow + 2)) / 100;
+    const maxDrag = (filteredProjects.length - slidesToShow) * slideWidth;
+    return { left: -maxDrag, right: 0 };
   };
 
   // Animation variants for project cards
@@ -198,10 +214,7 @@ const Work = ({ isDarkMode }) => {
               <motion.div
                 ref={carouselRef}
                 drag="x"
-                dragConstraints={{
-                  left: -((filteredProjects.length - slidesToShow) * (100 / slidesToShow + 2) * window.innerWidth) / 100,
-                  right: 0,
-                }}
+                dragConstraints={getDragConstraints()}
                 animate={{
                   x: `-${currentIndex * (100 / slidesToShow + 2)}%`,
                 }}
