@@ -58,6 +58,11 @@ import figma_color from './figma-color.svg';
 import github_color from './github-color.svg';
 import tailwind_color from './tailwindcss-color.svg';
 import nextjs_color from './nextjs-color.svg';
+import langchain from './langchain-color.svg';
+import openai from './openai-color.svg';
+import googlegemini from './googlegemini-color.svg';
+import huggingface from './huggingface-color.svg';
+
 
 export const assets = {
   user_image,
@@ -120,6 +125,10 @@ export const assets = {
   github_color,
   tailwind_color,
   nextjs_color,
+  langchain,
+  openai,
+  googlegemini,
+  huggingface,
 };
 
 export const workData = [
@@ -183,6 +192,10 @@ export const infoList = [
 
 export const toolsData = [
   assets.vscode,
+  assets.langchain,
+  assets.openai,
+  assets.googlegemini,
+  assets.huggingface,
   assets.firebase_color,
   assets.mongodb,
   assets.figma_color,
