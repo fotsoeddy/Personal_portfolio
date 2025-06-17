@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion, AnimatePresence, stagger } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { workData, assets } from '../../assets/assets'; // Adjust path as needed
 
@@ -7,12 +7,67 @@ const categories = ['All', 'Mobile', 'Website', 'Full Stack', 'SEO', 'AI'];
 
 const Work = ({ isDarkMode }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3); // Default: 3 slides on desktop
+  const carouselRef = useRef(null);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
 
   // Filter projects based on selected category
   const filteredProjects =
     selectedCategory === 'All'
       ? workData
       : workData.filter((project) => project.category === selectedCategory);
+
+  // Update slidesToShow based on window width
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.innerWidth < 640) {
+        setSlidesToShow(1); // Mobile
+      } else if (window.innerWidth < 1024) {
+        setSlidesToShow(2); // Tablet
+      } else {
+        setSlidesToShow(3); // Desktop
+      }
+    };
+    updateSlidesToShow();
+    window.addEventListener('resize', updateSlidesToShow);
+    return () => window.removeEventListener('resize', updateSlidesToShow);
+  }, []);
+
+  // Reset currentIndex when category changes
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [selectedCategory]);
+
+  // Auto-scroll when in view
+  useEffect(() => {
+    if (!isInView || filteredProjects.length <= slidesToShow) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) =>
+        prev >= filteredProjects.length - slidesToShow ? 0 : prev + 1
+      );
+    }, 4000); // 4 seconds
+    return () => clearInterval(interval);
+  }, [isInView, filteredProjects.length, slidesToShow]);
+
+  // Handle navigation
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? filteredProjects.length - slidesToShow : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev >= filteredProjects.length - slidesToShow ? 0 : prev + 1
+    );
+  };
+
+  // Handle dot click
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
+  };
 
   // Animation variants for project cards
   const cardVariants = {
@@ -21,7 +76,7 @@ const Work = ({ isDarkMode }) => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2 + 1, // Start after header animations
+        delay: i * 0.2 + 0.5,
         duration: 0.6,
         ease: 'easeOut',
       },
@@ -35,7 +90,7 @@ const Work = ({ isDarkMode }) => {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: i * 0.1 + 1.2, // Start after cards
+        delay: i * 0.1 + 0.7,
         duration: 0.4,
         ease: 'easeOut',
       },
@@ -52,11 +107,12 @@ const Work = ({ isDarkMode }) => {
     },
   };
 
-  // Fallback image for project images
-  const fallbackImage = '/fallback-image.png'; // Ensure this exists in public/
+  // Fallback image
+  const fallbackImage = '/fallback-image.png';
 
   return (
     <motion.div
+      ref={sectionRef}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -117,6 +173,8 @@ const Work = ({ isDarkMode }) => {
                   ? 'border-gray-600 text-gray-300 hover:bg-gray-700'
                   : 'border-gray-400 text-gray-700 hover:bg-gray-200'
               } ${isDarkMode ? 'border-gray-600' : 'border-gray-400'}`}
+              role="button"
+              aria-label={`Filter by ${category}`}
             >
               {category}
             </motion.button>
@@ -124,165 +182,241 @@ const Work = ({ isDarkMode }) => {
         </div>
       </motion.div>
 
-      {/* Project Grid or Coming Soon */}
+      {/* Project Carousel or Coming Soon */}
       <AnimatePresence mode="wait">
         {filteredProjects.length > 0 ? (
           <motion.div
-            key="projects"
-            initial={{ opacity: 0 }}
+            key={selectedCategory}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            exit={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="relative"
           >
-            {filteredProjects.map((project, index) => (
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
               <motion.div
-                key={project.title}
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover={{
-                  scale: 1.05,
-                  y: -4,
-                  transition: { duration: 0.3 },
+                ref={carouselRef}
+                drag="x"
+                dragConstraints={{
+                  left: -((filteredProjects.length - slidesToShow) * (100 / slidesToShow + 2) * window.innerWidth) / 100,
+                  right: 0,
                 }}
-                className={`rounded-lg overflow-hidden shadow-lg ${
-                  isDarkMode
-                    ? 'bg-gray-800 hover:shadow-white/20'
-                    : 'bg-gray-100 hover:shadow-black/20'
-                }`}
+                animate={{
+                  x: `-${currentIndex * (100 / slidesToShow + 2)}%`,
+                }}
+                transition={{ type: 'spring', stiffness: 100, damping: 30 }}
+                className="flex"
               >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                {filteredProjects.map((project, index) => (
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full"
-                  >
-                    <Image
-                      src={typeof project.bgImage === 'string' ? project.bgImage : fallbackImage}
-                      alt={project.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      priority={index === 0}
-                    />
-                  </motion.div>
-                </div>
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3
-                    className={`text-xl font-Ovo font-semibold mb-2 ${
-                      isDarkMode ? 'text-white' : 'text-gray-800'
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
-                  <p
-                    className={`text-sm mb-2 ${
-                      isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}
-                  >
-                    {project.category}
-                  </p>
-                  <p
-                    className={`text-sm mb-4 font-Ovo ${
-                      isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                    }`}
-                  >
-                    {project.description}
-                  </p>
-                  {/* Tech Stack */}
-                  <motion.div
-                    className="flex gap-2 mb-4 flex-wrap"
+                    key={project.title}
+                    custom={index}
+                    variants={cardVariants}
                     initial="hidden"
                     animate="visible"
-                    variants={{
-                      visible: {
-                        transition: {
-                          staggerChildren: 0.1,
-                        },
-                      },
+                    whileHover={{
+                      scale: 1.05,
+                      y: -4,
+                      transition: { duration: 0.3 },
                     }}
+                    className={`flex-shrink-0 w-[calc(100%-24px)] sm:w-[calc(50%-24px)] lg:w-[calc(33.33%-24px)] px-3 ${
+                      isDarkMode
+                        ? 'bg-gray-800 hover:shadow-white/20'
+                        : 'bg-gray-100 hover:shadow-black/20'
+                    } rounded-lg overflow-hidden shadow-lg`}
                   >
-                    {project.tech.map((tech, i) => (
+                    {/* Project Image */}
+                    <div className="relative h-48 overflow-hidden">
                       <motion.div
-                        key={i}
-                        custom={i}
-                        variants={techIconVariants}
                         whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full h-full"
                       >
-                        <Image src={tech} alt="Tech icon" width={24} height={24} />
+                        <Image
+                          src={typeof project.bgImage === 'string' ? project.bgImage : fallbackImage}
+                          alt={project.title}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                          priority={index === 0}
+                        />
                       </motion.div>
-                    ))}
+                    </div>
+                    {/* Project Content */}
+                    <div className="p-6">
+                      <h3
+                        className={`text-xl font-Ovo font-semibold mb-2 ${
+                          isDarkMode ? 'text-white' : 'text-gray-800'
+                        }`}
+                      >
+                        {project.title}
+                      </h3>
+                      <p
+                        className={`text-sm mb-2 ${
+                          isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                        }`}
+                      >
+                        {project.category}
+                      </p>
+                      <p
+                        className={`text-sm mb-4 font-Ovo ${
+                          isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                        }`}
+                      >
+                        {project.description}
+                      </p>
+                      {/* Tech Stack */}
+                      <motion.div
+                        className="flex gap-2 mb-4 flex-wrap"
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                          visible: { transition: { staggerChildren: 0.1 } },
+                        }}
+                      >
+                        {project.tech.map((tech, i) => (
+                          <motion.div
+                            key={i}
+                            custom={i}
+                            variants={techIconVariants}
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            <Image src={tech} alt="Tech icon" width={24} height={24} />
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                      {/* Project Links */}
+                      <div className="flex gap-4">
+                        <motion.a
+                          href={project.previewLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                          className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-Ovo transition duration-300 ${
+                            isDarkMode
+                              ? 'bg-white text-[#11001F] hover:bg-gray-200'
+                              : 'bg-[#11001F] text-white hover:bg-gray-800'
+                          }`}
+                          aria-label={`Preview ${project.title}`}
+                        >
+                          Preview
+                          <motion.div
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                            className="ml-2"
+                          >
+                            <Image
+                              src={isDarkMode ? assets.right_arrow : assets.right_arrow_white}
+                              alt="Arrow"
+                              width={16}
+                              height={16}
+                            />
+                          </motion.div>
+                        </motion.a>
+                        <motion.a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                          className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-Ovo transition duration-300 border ${
+                            isDarkMode
+                              ? 'border-gray-600 text-gray-300 hover:bg-gray-700'
+                              : 'border-gray-400 text-gray-700 hover:bg-gray-200'
+                          }`}
+                          aria-label={`View ${project.title} on GitHub`}
+                        >
+                          <motion.div
+                            whileHover={{ x: -4 }}
+                            transition={{ duration: 0.2 }}
+                            className="mr-2"
+                          >
+                            <Image
+                              src={isDarkMode ? assets.github_color : assets.github_icon_black}
+                              alt="GitHub"
+                              width={16}
+                              height={16}
+                            />
+                          </motion.div>
+                          View on GitHub
+                        </motion.a>
+                      </div>
+                    </div>
                   </motion.div>
-                  {/* Project Links */}
-                  <div className="flex gap-4">
-                    <motion.a
-                      href={project.previewLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                      className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-Ovo transition duration-300 ${
-                        isDarkMode
-                          ? 'bg-white text-[#11001F] hover:bg-gray-200'
-                          : 'bg-[#11001F] text-white hover:bg-gray-800'
-                      }`}
-                      aria-label={`Preview ${project.title}`}
-                    >
-                      Preview
-                      <motion.div
-                        whileHover={{ x: 4 }}
-                        transition={{ duration: 0.2 }}
-                        className="ml-2"
-                      >
-                        <Image
-                          src={isDarkMode ? assets.right_arrow : assets.right_arrow_white}
-                          alt="Arrow"
-                          width={16}
-                          height={16}
-                        />
-                      </motion.div>
-                    </motion.a>
-                    <motion.a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                      className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-Ovo transition duration-300 border ${
-                        isDarkMode
-                          ? 'border-gray-600 text-gray-300 hover:bg-gray-700'
-                          : 'border-gray-400 text-gray-700 hover:bg-gray-200'
-                      }`}
-                      aria-label={`View ${project.title} on GitHub`}
-                    >
-                      <motion.div
-                        whileHover={{ x: -4 }}
-                        transition={{ duration: 0.2 }}
-                        className="mr-2"
-                      >
-                        <Image
-                          src={isDarkMode ? assets.github_color : assets.github_icon_black}
-                          alt="GitHub"
-                          width={16}
-                          height={16}
-                        />
-                      </motion.div>
-                      View on GitHub
-                    </motion.a>
-                  </div>
-                </div>
+                ))}
               </motion.div>
-            ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            {filteredProjects.length > slidesToShow && (
+              <div className="flex justify-between mt-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handlePrev}
+                  className={`p-2 rounded-full ${
+                    isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-200 text-[#11001F]'
+                  }`}
+                  aria-label="Previous slide"
+                >
+                  <Image
+                    src={isDarkMode ? assets.right_arrow_white : assets.right_arrow}
+                    alt="Previous"
+                    width={16}
+                    height={16}
+                    className="rotate-180"
+                  />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleNext}
+                  className={`p-2 rounded-full ${
+                    isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-200 text-[#11001F]'
+                  }`}
+                  aria-label="Next slide"
+                >
+                  <Image
+                    src={isDarkMode ? assets.right_arrow_white : assets.right_arrow}
+                    alt="Next"
+                    width={16}
+                    height={16}
+                  />
+                </motion.button>
+              </div>
+            )}
+
+            {/* Navigation Dots */}
+            {filteredProjects.length > slidesToShow && (
+              <div className="flex justify-center mt-4 space-x-2">
+                {Array.from({ length: filteredProjects.length - slidesToShow + 1 }).map((_, index) => (
+                  <motion.button
+                    key={index}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
+                    onClick={() => handleDotClick(index)}
+                    className={`w-3 h-3 rounded-full ${
+                      currentIndex === index
+                        ? isDarkMode
+                          ? 'bg-white'
+                          : 'bg-[#11001F]'
+                        : isDarkMode
+                        ? 'bg-gray-500'
+                        : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </motion.div>
         ) : (
           <motion.div
             key={selectedCategory}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 1 }}
             className="flex items-center justify-center h-[400px]"
           >
             <motion.div

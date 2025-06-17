@@ -62,7 +62,7 @@ import langchain from './langchain-color.svg';
 import openai from './openai-color.svg';
 import googlegemini from './googlegemini-color.svg';
 import huggingface from './huggingface-color.svg';
-
+import lock_icon from './lock-icon.svg'; // New lock icon
 
 export const assets = {
   user_image,
@@ -129,35 +129,69 @@ export const assets = {
   openai,
   googlegemini,
   huggingface,
+  lock_icon,
 };
 
 export const workData = [
   {
     title: 'Frontend Project',
-    description: 'This project involved designing and developing a responsive, user-friendly website for a client in the e-commerce sector. The focus was on creating an intuitive UI with seamless navigation, optimized for both desktop and mobile devices. The website leverages modern frontend technologies to ensure fast load times and a visually appealing experience.',
+    description: 'A responsive e-commerce website with intuitive UI and fast load times.',
     bgImage: '/work-1.png',
     category: 'Website',
     tech: [assets.vscode, assets.figma_color, assets.git],
     githubLink: 'https://github.com/username/frontend-project',
     previewLink: 'https://example.com/frontend-project',
+    isPrivate: false,
   },
   {
     title: 'Geo-Based App',
-    description: 'A mobile application designed to provide location-based services, enabling users to discover nearby points of interest with real-time data. The app integrates geolocation APIs and a robust backend to deliver personalized recommendations, ensuring a smooth and engaging user experience across iOS and Android platforms.',
+    description: 'A mobile app for location-based services with real-time data.',
     bgImage: '/work-2.png',
     category: 'Mobile',
     tech: [assets.react_color, assets.firebase_color, assets.mongodb],
     githubLink: 'https://github.com/username/geo-app',
     previewLink: 'https://example.com/geo-app',
+    isPrivate: true,
   },
   {
     title: 'AI-Powered System',
-    description: 'An innovative AI-powered platform that automates data analysis and provides actionable insights for businesses. Built with a scalable backend and machine learning models, this system processes large datasets efficiently and presents results through an interactive dashboard, enhancing decision-making processes.',
+    description: 'An AI platform for automated data analysis and insights.',
     bgImage: '/work-3.png',
     category: 'AI',
-    tech: [assets.django, assets.postgresql, assets.nextjs_color],
+    tech: [assets.django, assets.postgresql2, assets.nextjs_color, assets.langchain],
     githubLink: 'https://github.com/username/ai-system',
     previewLink: 'https://example.com/ai-system',
+    isPrivate: false,
+  },
+  {
+    title: 'Chatbot Assistant',
+    description: 'An AI-driven chatbot using LLMs for customer support automation.',
+    bgImage: '/work-4.png',
+    category: 'AI',
+    tech: [assets.python, assets.openai, assets.huggingface],
+    githubLink: 'https://github.com/username/chatbot',
+    previewLink: 'https://example.com/chatbot',
+    isPrivate: true,
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'A personal portfolio showcasing projects with a modern design.',
+    bgImage: '/work-5.png',
+    category: 'Website',
+    tech: [assets.nextjs_color, assets.tailwind_color, assets.react_color],
+    githubLink: 'https://github.com/username/portfolio',
+    previewLink: 'https://example.com/portfolio',
+    isPrivate: false,
+  },
+  {
+    title: 'Task Automation Tool',
+    description: 'A tool for automating repetitive tasks using AI and scripting.',
+    bgImage: '/work-6.png',
+    category: 'Full Stack',
+    tech: [assets.python, assets.googlegemini, assets.redis, assets.celery],
+    githubLink: 'https://github.com/username/task-tool',
+    previewLink: 'https://example.com/task-tool',
+    isPrivate: true,
   },
 ];
 
