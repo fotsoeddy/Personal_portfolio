@@ -52,8 +52,6 @@ import celery from './celery-color.svg';
 import nginx from './nginx-color.svg';
 import linux from './linux-color.svg';
 import ubuntu from './ubuntu-color.svg';
-
-// New colored SVGs
 import react_color from './react-color.svg';
 import firebase_color from './firebase-color.svg';
 import figma_color from './figma-color.svg';
@@ -121,30 +119,36 @@ export const assets = {
   figma_color,
   github_color,
   tailwind_color,
-  nextjs_color
+  nextjs_color,
 };
 
 export const workData = [
   {
-    title: 'Frontend project',
-    description: 'Web Design',
+    title: 'Frontend Project',
+    description: 'This project involved designing and developing a responsive, user-friendly website for a client in the e-commerce sector. The focus was on creating an intuitive UI with seamless navigation, optimized for both desktop and mobile devices. The website leverages modern frontend technologies to ensure fast load times and a visually appealing experience.',
     bgImage: '/work-1.png',
     category: 'Website',
-    tech: [assets.vscode, assets.figma_color, assets.git]
+    tech: [assets.vscode, assets.figma_color, assets.git],
+    githubLink: 'https://github.com/username/frontend-project',
+    previewLink: 'https://example.com/frontend-project',
   },
   {
-    title: 'Geo based app',
-    description: 'Mobile App',
+    title: 'Geo-Based App',
+    description: 'A mobile application designed to provide location-based services, enabling users to discover nearby points of interest with real-time data. The app integrates geolocation APIs and a robust backend to deliver personalized recommendations, ensuring a smooth and engaging user experience across iOS and Android platforms.',
     bgImage: '/work-2.png',
     category: 'Mobile',
-    tech: [assets.react_color, assets.firebase_color, assets.mongodb]
+    tech: [assets.react_color, assets.firebase_color, assets.mongodb],
+    githubLink: 'https://github.com/username/geo-app',
+    previewLink: 'https://example.com/geo-app',
   },
   {
-    title: 'AI-powered system',
-    description: 'Artificial Intelligence',
+    title: 'AI-Powered System',
+    description: 'An innovative AI-powered platform that automates data analysis and provides actionable insights for businesses. Built with a scalable backend and machine learning models, this system processes large datasets efficiently and presents results through an interactive dashboard, enhancing decision-making processes.',
     bgImage: '/work-3.png',
     category: 'AI',
-    tech: [assets.django, assets.postgresql, assets.nextjs_color]
+    tech: [assets.django, assets.postgresql, assets.nextjs_color],
+    githubLink: 'https://github.com/username/ai-system',
+    previewLink: 'https://example.com/ai-system',
   },
 ];
 
@@ -194,5 +198,5 @@ export const toolsData = [
   assets.linux,
   assets.ubuntu,
   assets.tailwind_color,
-  assets.nextjs_color
+  assets.nextjs_color,
 ];
