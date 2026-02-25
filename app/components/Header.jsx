@@ -44,9 +44,9 @@ const Header = ({isDarkMode}) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className='max-w-2xl mx-auto font-Ovo text-sm text-gray-600 dark:text-gray-400'
+        className='max-w-2xl mx-auto font-Ovo text-base text-gray-600 dark:text-gray-400'
       >
-        I am a passionate and skilled Full Stack Developer specializing in building dynamic, scalable, and user-friendly web applications. With expertise in React, Next.js, and Django, I bring a comprehensive approach to both front-end and back-end development. Let's collaborate to turn ideas into impactful digital experiences.
+        Full Stack Developer & DevOps Engineer based in Cameroon — building scalable web applications, automating infrastructure, and shipping products that make an impact.
       </motion.p>
 
 {/* Social Media Icons */}

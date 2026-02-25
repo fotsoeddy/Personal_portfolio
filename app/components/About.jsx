@@ -40,7 +40,7 @@ const About = ({isDarkMode}) => {
         whileInView={{opacity:1}}
         transition={{duration: 0.6, delay:0.8}}
         className='flex-1 '>
-            <p className=' mb-10 max-w-2xl font-Ovo'> I am a passionate and skilled Full Stack Developer specializing in building dynamic, scalable, and user-friendly web applications. With expertise in React, Next.js, and Django, I bring a comprehensive approach to both front-end and back-end development. Let’s collaborate to turn ideas into impactful digital experiences</p>
+            <p className=' mb-10 max-w-2xl font-Ovo'>I am a Software Engineer &amp; DevOps Engineer passionate about building, deploying and scaling web applications. With hands-on experience in React, Next.js, Django, Docker, and cloud infrastructure, I bridge the gap between development and operations — turning ideas into reliable, production-ready products.</p>
 
         <motion.ul 
         initial={{ opacity: 0}}

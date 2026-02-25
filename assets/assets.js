@@ -196,10 +196,11 @@ export const workData = [
 ];
 
 export const serviceData = [
-  { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-  { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-  { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-  { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
+  { icon: assets.web_icon, title: 'Full Stack Development', description: 'End-to-end web development with React, Next.js, Django and REST APIs — from concept to production-ready applications.', link: '' },
+  { icon: assets.mobile_icon, title: 'DevOps Engineering', description: 'CI/CD pipelines, Docker containerization, Nginx configuration, Linux server management, cloud deployment on AWS (EC2, S3).', link: '' },
+  { icon: assets.ui_icon, title: 'Security & Maintenance', description: 'Securing and maintaining applications online — SSL, server hardening, monitoring, performance tuning and uptime guarantees.', link: '' },
+  { icon: assets.code_icon, title: 'Backend & API Development', description: 'Building robust, scalable backends with Django REST Framework, PostgreSQL, Redis, Celery and clean API design.', link: '' },
+  { icon: assets.graphics_icon, title: 'Testing & QA', description: 'Writing automated tests, API testing, integration testing and quality assurance to ensure your product works reliably.', link: '' },
 ];
 
 export const infoList = [
@@ -244,7 +245,7 @@ export const experienceData = [
     description: 'Building robust backend systems and REST APIs, managing databases and server infrastructure with Django and PostgreSQL.'
   },
   {
-    company: 'Previous Role',
+    company: 'Unemployed',
     country: 'USA',
     position: 'Frontend Developer',
     duration: 'April 2024 - January 2026',

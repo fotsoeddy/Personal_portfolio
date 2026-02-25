@@ -26,13 +26,13 @@ const Services = () => {
              initial={{ opacity: 0}}
              whileInView={{opacity:1}}
              transition={{duration: 0.5, delay:0.7}}
-       className='text-center max-w-2xl mx-auto mt-5  mb-12 font-Ovo'>I am a passionate and skilled Full Stack Developer specializing in building dynamic, scalable, and user-friendly web applications.</motion.p>
+       className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo text-base'>From building full-stack web apps to deploying and securing them on the cloud — I cover the full engineering lifecycle.</motion.p>
 
        <motion.div 
              initial={{ opacity: 0}}
              whileInView={{opacity:1}}
              transition={{duration: 0.6, delay:0.9}}  
-       className='grid grid-cols-auto gap-6 my-10'>
+       className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 my-10'>
 
         {serviceData.map(({icon, title, description, link},index)=>(
             <motion.div 
