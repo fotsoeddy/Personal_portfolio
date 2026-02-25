@@ -47,6 +47,9 @@ const Navbar = ({isDarkMode,setIsDarkMode}) => {
       <Link className='font-Ovo' href="/#about">About Me</Link>
     </li>
     <li>
+      <Link className='font-Ovo' href="/#experience">Experience</Link>
+    </li>
+    <li>
       <Link className='font-Ovo' href="/#services">Services</Link>
     </li>
     <li>
@@ -77,6 +80,9 @@ const Navbar = ({isDarkMode,setIsDarkMode}) => {
     </li>
     <li>
       <Link className='font-Ovo' onClick={closeMenu} href="/#about">About Me</Link>
+    </li>
+    <li>
+      <Link className='font-Ovo' onClick={closeMenu} href="/#experience">Experience</Link>
     </li>
     <li>
       <Link className='font-Ovo' onClick={closeMenu} href="/#services">Services</Link>

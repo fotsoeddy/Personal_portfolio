@@ -231,7 +231,8 @@ export const experienceData = [
     position: 'Software Developer',
     duration: 'September 2025 - Present',
     location: 'Remote',
-    category: 'Work'
+    category: 'Work',
+    description: 'Developing and maintaining scalable web applications, contributing to backend architecture and API design using modern development practices.'
   },
   {
     company: 'Hooyis',
@@ -239,15 +240,26 @@ export const experienceData = [
     position: 'Backend Developer',
     duration: 'April 2025 - Present',
     location: 'Freelance/Hybrid',
-    category: 'Work'
+    category: 'Work',
+    description: 'Building robust backend systems and REST APIs, managing databases and server infrastructure with Django and PostgreSQL.'
   },
   {
-    company: 'Unemployed', // Note: User said "umemployed" but I will use the role name or "Freelance" if applicable, but user explicitly wrote it. I'll name the block Freelance as per user's final instruction "now a new block free lance".
+    company: 'Previous Role',
     country: 'USA',
     position: 'Frontend Developer',
     duration: 'April 2024 - January 2026',
     location: 'Remote',
-    category: 'Freelance'
+    category: 'Work',
+    description: 'Designed and developed responsive, user-friendly web interfaces using React.js, Next.js and TailwindCSS, focusing on performance and UX.'
+  },
+  {
+    company: 'Self-Employed',
+    country: 'Worldwide',
+    position: 'Freelance Developer',
+    duration: 'Ongoing',
+    location: 'Remote',
+    category: 'Freelance',
+    description: 'Building custom full-stack web solutions for clients globally — from MVPs to production-ready platforms using React, Django, and DevOps workflows.'
   }
 ];
 
