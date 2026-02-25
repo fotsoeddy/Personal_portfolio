@@ -26,7 +26,7 @@ const About = ({isDarkMode}) => {
       initial={{ opacity: 0}}
       whileInView={{opacity:1}}
       transition={{duration: 0.8}} 
-      className='flex flex-col w-full lg:flex-row items-center gap-20 my-20'>
+      className='flex flex-col w-full lg:flex-row items-center gap-20 my-10'>
         <motion.div
         initial={{ opacity: 0,scale: 0.9}}
         whileInView={{opacity:1, scale:1}}

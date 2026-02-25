@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import About from './components/About';
+import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
@@ -32,6 +33,7 @@ export default function Home() {
       <Experience isDarkMode={isDarkMode} />
       <Services isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
+      <Blog isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </>

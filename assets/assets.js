@@ -264,6 +264,57 @@ export const experienceData = [
   }
 ];
 
+export const blogData = [
+  {
+    title: 'Dockerizing a Django + Next.js App: A Full Guide',
+    description: 'Step-by-step walkthrough of containerizing a full-stack application with Docker and Docker Compose, from development to production.',
+    category: 'DevOps',
+    date: 'Feb 2026',
+    slug: 'dockerizing-django-nextjs',
+    emoji: '🐳',
+  },
+  {
+    title: 'Building REST APIs with Django REST Framework',
+    description: 'Learn how to build clean, secure, and scalable REST APIs using DRF, JWT authentication, and proper serializer design patterns.',
+    category: 'Backend',
+    date: 'Jan 2026',
+    slug: 'django-rest-framework-guide',
+    emoji: '⚙️',
+  },
+  {
+    title: 'CI/CD Pipelines with GitHub Actions',
+    description: 'Automate your testing and deployment workflows using GitHub Actions — from lint checks to production deploys on every push.',
+    category: 'DevOps',
+    date: 'Jan 2026',
+    slug: 'cicd-github-actions',
+    emoji: '🚀',
+  },
+  {
+    title: 'Getting Started with Redis and Celery in Django',
+    description: 'Offload long-running tasks, schedule jobs, and improve app performance using Celery workers backed by Redis.',
+    category: 'Backend',
+    date: 'Dec 2025',
+    slug: 'redis-celery-django',
+    emoji: '⚡',
+  },
+  {
+    title: 'Next.js 15 App Router: What You Need to Know',
+    description: 'A practical guide to the App Router in Next.js 15 — layouts, server components, streaming, and route handlers explained.',
+    category: 'Frontend',
+    date: 'Nov 2025',
+    slug: 'nextjs-15-app-router',
+    emoji: '▲',
+  },
+  {
+    title: 'Nginx as a Reverse Proxy: Production Setup Guide',
+    description: 'Configure Nginx to securely serve your web application, handle SSL termination, and load balance across multiple server instances.',
+    category: 'DevOps',
+    date: 'Oct 2025',
+    slug: 'nginx-reverse-proxy-guide',
+    emoji: '🔒',
+  },
+];
+
 export const toolsData = [
   assets.vscode,
   assets.langchain,
