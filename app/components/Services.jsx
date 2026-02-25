@@ -41,9 +41,6 @@ const Services = () => {
                 <Image src={icon} alt=' ' className='w-10' />
                 <motion.h3 className='text-lg my-4 text-gray-700 dark:text-white'>{title}</motion.h3>
                 <motion.p className='text-sm text-gray-700 leading-5 dark:text-white'> {description} </motion.p>
-                <motion.a href={link} className='flex items-center gap-2 text-sm mt-5'>
-                    Read More <Image src={assets.right_arrow} alt=' ' className='w-4' />
-                </motion.a>
             </motion.div>
         ))}
 

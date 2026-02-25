@@ -196,7 +196,7 @@ export const workData = [
 ];
 
 export const serviceData = [
-  { icon: assets.web_icon, title: 'Full Stack Development', description: 'End-to-end web development with React, Next.js, Django and REST APIs — from concept to production-ready applications.', link: '' },
+  { icon: assets.web_icon, title: 'Full Stack Development / Mobile', description: 'End-to-end web development with React, Next.js, Django and REST APIs — from concept to production-ready applications.', link: '' },
   { icon: assets.mobile_icon, title: 'DevOps Engineering', description: 'CI/CD pipelines, Docker containerization, Nginx configuration, Linux server management, cloud deployment on AWS (EC2, S3).', link: '' },
   { icon: assets.ui_icon, title: 'Security & Maintenance', description: 'Securing and maintaining applications online — SSL, server hardening, monitoring, performance tuning and uptime guarantees.', link: '' },
   { icon: assets.code_icon, title: 'Backend & API Development', description: 'Building robust, scalable backends with Django REST Framework, PostgreSQL, Redis, Celery and clean API design.', link: '' },
