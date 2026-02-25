@@ -100,8 +100,28 @@ const Work = ({ isDarkMode }) => {
         </div>
       </motion.div>
 
+      {/* Project Grid Header */}
+      <div className="flex items-center justify-between mb-8 px-2">
+        <h3 className={`text-xl font-Ovo ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
+          Featured Projects
+        </h3>
+        <Link 
+          href="/projects" 
+          className={`flex items-center gap-1 group text-sm font-Ovo transition-all duration-300 ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}`}
+        >
+          View all 
+          <Image 
+            src={isDarkMode ? assets.right_arrow_white : assets.right_arrow} 
+            alt="" 
+            width={14} 
+            height={14} 
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </Link>
+      </div>
+
       {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         <AnimatePresence mode="popLayout">
           {displayProjects.map((project, index) => (
             <motion.div
@@ -191,7 +211,7 @@ const Work = ({ isDarkMode }) => {
       </div>
 
       {/* View All Button */}
-      {filteredProjects.length > 0 && (
+      {filteredProjects.length > 6 && (
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -199,7 +219,7 @@ const Work = ({ isDarkMode }) => {
         >
           <Link
             href="/projects"
-            className={`flex items-center gap-2 px-10 py-3 rounded-full border border-gray-500 font-Ovo hover:bg-gray-50 dark:hover:bg-[#1a0b2e] transition duration-500 ${
+            className={`flex items-center gap-2 px-8 py-2.5 rounded-full border border-gray-500 text-sm font-Ovo hover:bg-gray-50 dark:hover:bg-[#1a0b2e] transition duration-500 ${
               isDarkMode ? 'text-white' : 'text-gray-700'
             }`}
           >
@@ -207,8 +227,8 @@ const Work = ({ isDarkMode }) => {
             <Image 
               src={isDarkMode ? assets.right_arrow_white : assets.right_arrow} 
               alt="" 
-              width={16} 
-              height={16} 
+              width={14} 
+              height={14} 
             />
           </Link>
         </motion.div>

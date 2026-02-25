@@ -224,6 +224,33 @@ export const infoList = [
   },
 ];
 
+export const experienceData = [
+  {
+    company: 'Raisup',
+    country: 'USA',
+    position: 'Software Developer',
+    duration: 'September 2025 - Present',
+    location: 'Remote',
+    category: 'Work'
+  },
+  {
+    company: 'Hooyis',
+    country: 'Cameroon',
+    position: 'Backend Developer',
+    duration: 'April 2025 - Present',
+    location: 'Freelance/Hybrid',
+    category: 'Work'
+  },
+  {
+    company: 'Unemployed', // Note: User said "umemployed" but I will use the role name or "Freelance" if applicable, but user explicitly wrote it. I'll name the block Freelance as per user's final instruction "now a new block free lance".
+    country: 'USA',
+    position: 'Frontend Developer',
+    duration: 'April 2024 - January 2026',
+    location: 'Remote',
+    category: 'Freelance'
+  }
+];
+
 export const toolsData = [
   assets.vscode,
   assets.langchain,

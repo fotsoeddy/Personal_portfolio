@@ -30,8 +30,14 @@ const Navbar = ({isDarkMode,setIsDarkMode}) => {
     </div>
 
     <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : ""}`}>
-  <Link href="/#top">
-    {/* Logo removed as requested */}
+  <Link href="/#top" className="flex items-center gap-2 group">
+    <div className={`p-1 rounded-lg transition-all duration-300 ${isScroll ? 'bg-transparent' : 'bg-white/10 backdrop-blur-md border border-white/20'}`}>
+      <Image 
+        src={isDarkMode ? assets.logo_dark : assets.logo} 
+        alt='Logo' 
+        className='w-12 md:w-14 cursor-pointer transition-transform duration-300 group-hover:scale-110' 
+      />
+    </div>
   </Link>
   <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? " " : "bg-white/50 shadow-sm dark:border dark:border-white/50 dark:bg-transparent" } `}>
     <li>
