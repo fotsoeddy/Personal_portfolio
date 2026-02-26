@@ -11,6 +11,7 @@ import mongodb from './mongodb.png';
 import right_arrow_white from './right-arrow-white.png';
 import logo from './logo.webp';
 import logo_dark from './logo_dark.webp';
+import white_logo from './white_logo.webp';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
 import profile_img from './profile-img.png';
@@ -78,6 +79,7 @@ export const assets = {
   right_arrow_white,
   logo,
   logo_dark,
+  white_logo,
   mail_icon,
   mail_icon_dark,
   profile_img,
@@ -272,6 +274,7 @@ export const blogData = [
     date: 'Feb 2026',
     slug: 'dockerizing-django-nextjs',
     emoji: '🐳',
+    author: 'Fotso Eddy',
   },
   {
     title: 'Building REST APIs with Django REST Framework',
@@ -280,6 +283,7 @@ export const blogData = [
     date: 'Jan 2026',
     slug: 'django-rest-framework-guide',
     emoji: '⚙️',
+    author: 'Fotso Eddy',
   },
   {
     title: 'CI/CD Pipelines with GitHub Actions',
@@ -288,6 +292,7 @@ export const blogData = [
     date: 'Jan 2026',
     slug: 'cicd-github-actions',
     emoji: '🚀',
+    author: 'Fotso Eddy',
   },
   {
     title: 'Getting Started with Redis and Celery in Django',
@@ -296,6 +301,7 @@ export const blogData = [
     date: 'Dec 2025',
     slug: 'redis-celery-django',
     emoji: '⚡',
+    author: 'Fotso Eddy',
   },
   {
     title: 'Next.js 15 App Router: What You Need to Know',
@@ -304,6 +310,7 @@ export const blogData = [
     date: 'Nov 2025',
     slug: 'nextjs-15-app-router',
     emoji: '▲',
+    author: 'Fotso Eddy',
   },
   {
     title: 'Nginx as a Reverse Proxy: Production Setup Guide',
@@ -312,6 +319,7 @@ export const blogData = [
     date: 'Oct 2025',
     slug: 'nginx-reverse-proxy-guide',
     emoji: '🔒',
+    author: 'Fotso Eddy',
   },
 ];
 

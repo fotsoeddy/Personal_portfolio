@@ -29,13 +29,13 @@ const Navbar = ({isDarkMode,setIsDarkMode}) => {
         <Image src={assets.header_bg_color } alt='' className='w-full ' />
     </div>
 
-    <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : ""}`}>
+    <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] ${isScroll ? "py-2 bg-white/50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : "py-4"} flex items-center justify-between z-50 transition-all duration-300`}>
   <Link href="/#top" className="flex items-center gap-2 group">
-    <div className={`p-1 rounded-lg transition-all duration-300 ${isScroll ? 'bg-transparent' : 'bg-white/10 backdrop-blur-md border border-white/20'}`}>
+    <div className={`transition-all duration-300 ${isScroll ? 'bg-transparent' : 'bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-xl'}`}>
       <Image 
-        src={isDarkMode ? assets.logo_dark : assets.logo} 
+        src={isDarkMode ? assets.logo_dark : assets.white_logo} 
         alt='Logo' 
-        className='w-12 md:w-14 cursor-pointer transition-transform duration-300 group-hover:scale-110' 
+        className={`${isScroll ? 'w-16 md:w-20' : 'w-24 md:w-28'} cursor-pointer transition-all duration-300 group-hover:scale-110`} 
       />
     </div>
   </Link>

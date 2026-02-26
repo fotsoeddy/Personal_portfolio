@@ -98,8 +98,10 @@ const Blog = ({ isDarkMode }) => {
             <div className='p-6'>
               {/* Category + Date */}
               <div className='flex items-center justify-between mb-3'>
-                <span className={`text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-medium ${
-                  isDarkMode ? 'bg-purple-900/40 text-purple-300' : 'bg-purple-50 text-purple-700'
+                <span className={`text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold border ${
+                  isDarkMode 
+                    ? 'border-purple-500/30 bg-purple-900/40 text-purple-300' 
+                    : 'border-purple-100 bg-purple-50 text-purple-700'
                 }`}>
                   {post.category}
                 </span>
@@ -113,15 +115,24 @@ const Blog = ({ isDarkMode }) => {
                 {post.description}
               </p>
 
-              <Link
-                href={`/blog/${post.slug}`}
-                className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
-                  isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-[#11001F] hover:text-purple-700'
-                }`}
-              >
-                Read article
-                <Image src={isDarkMode ? assets.right_arrow_white : assets.right_arrow} alt='' width={14} height={14} className='transition-transform group-hover:translate-x-1' />
-              </Link>
+              <div className='flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-white/5'>
+                <div className='flex items-center gap-2'>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] ${isDarkMode ? 'bg-purple-900/40 text-purple-300' : 'bg-gray-100 text-gray-600'}`}>
+                    👤
+                  </div>
+                  <span className='text-xs font-medium dark:text-gray-300'>{post.author}</span>
+                </div>
+
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
+                    isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-[#11001F] hover:text-purple-700'
+                  }`}
+                >
+                  Read
+                  <Image src={isDarkMode ? assets.right_arrow_white : assets.right_arrow} alt='' width={14} height={14} className='transition-transform group-hover:translate-x-1' />
+                </Link>
+              </div>
             </div>
           </motion.div>
         ))}

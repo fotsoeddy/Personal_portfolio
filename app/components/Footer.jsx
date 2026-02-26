@@ -6,11 +6,11 @@ const Footer = ({ isDarkMode }) => {
   return (
     <div className='mt-20'>
       <div className='text-center'>
-        <div className="inline-block p-2 rounded-xl mb-4 transition-all duration-300 hover:shadow-lg dark:hover:shadow-white/10">
+        <div className="inline-block p-4 rounded-2xl mb-4 transition-all duration-300 hover:shadow-lg dark:hover:shadow-white/10">
           <Image 
-            src={isDarkMode ? assets.logo_dark : assets.logo} 
+            src={isDarkMode ? assets.logo_dark : assets.white_logo} 
             alt='Logo' 
-            className='w-24 md:w-28 mx-auto' 
+            className='w-32 md:w-36 mx-auto transition-transform duration-300 hover:scale-105' 
           />
         </div>
       

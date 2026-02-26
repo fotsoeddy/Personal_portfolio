@@ -60,25 +60,31 @@ export default function BlogPage() {
       </div>
 
       <div className='px-[12%] py-16'>
-        {/* Category Filters */}
-        <div className='flex flex-wrap justify-center gap-3 mb-12'>
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-Ovo border transition-all duration-300 ${
-                activeCategory === cat
-                  ? isDarkMode
-                    ? 'bg-white text-black border-white'
-                    : 'bg-[#11001F] text-white border-[#11001F]'
-                  : isDarkMode
-                    ? 'border-gray-700 text-gray-400 hover:border-gray-500'
-                    : 'border-gray-300 text-gray-600 hover:border-gray-400'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Header with Article Count */}
+        <div className='flex flex-col md:flex-row items-center justify-between mb-12 gap-6'>
+          <h2 className='text-2xl md:text-3xl font-Ovo'>
+             <span className='text-purple-600 font-bold'>{filtered.length}</span> {filtered.length === 1 ? 'Article' : 'Articles'}
+          </h2>
+          {/* Category Filters */}
+          <div className='flex flex-wrap justify-center gap-3'>
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2 rounded-full text-sm font-Ovo border transition-all duration-300 ${
+                  activeCategory === cat
+                    ? isDarkMode
+                      ? 'bg-white text-black border-white'
+                      : 'bg-[#11001F] text-white border-[#11001F]'
+                    : isDarkMode
+                      ? 'border-gray-700 text-gray-400 hover:border-gray-500'
+                      : 'border-gray-300 text-gray-600 hover:border-gray-400'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Blog Grid */}
@@ -108,8 +114,10 @@ export default function BlogPage() {
 
                 <div className='p-6'>
                   <div className='flex items-center justify-between mb-3'>
-                    <span className={`text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-medium ${
-                      isDarkMode ? 'bg-purple-900/40 text-purple-300' : 'bg-purple-50 text-purple-700'
+                    <span className={`text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold border ${
+                      isDarkMode 
+                        ? 'border-purple-500/30 bg-purple-900/40 text-purple-300' 
+                        : 'border-purple-100 bg-purple-50 text-purple-700'
                     }`}>
                       {post.category}
                     </span>
@@ -123,21 +131,30 @@ export default function BlogPage() {
                     {post.description}
                   </p>
 
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
-                      isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-[#11001F] hover:text-purple-700'
-                    }`}
-                  >
-                    Read article
-                    <Image
-                      src={isDarkMode ? assets.right_arrow_white : assets.right_arrow}
-                      alt=''
-                      width={14}
-                      height={14}
-                      className='transition-transform group-hover:translate-x-1'
-                    />
-                  </Link>
+                  <div className='flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-white/5'>
+                    <div className='flex items-center gap-2'>
+                       <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] ${isDarkMode ? 'bg-purple-900/40 text-purple-300' : 'bg-gray-100 text-gray-600'}`}>
+                          👤
+                       </div>
+                       <span className='text-xs font-medium dark:text-gray-300'>{post.author}</span>
+                    </div>
+
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 ${
+                        isDarkMode ? 'text-purple-400 hover:text-purple-300' : 'text-[#11001F] hover:text-purple-700'
+                      }`}
+                    >
+                      Read
+                      <Image
+                        src={isDarkMode ? assets.right_arrow_white : assets.right_arrow}
+                        alt=''
+                        width={14}
+                        height={14}
+                        className='transition-transform group-hover:translate-x-1'
+                      />
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -151,6 +168,7 @@ export default function BlogPage() {
         )}
       </div>
 
+      <Newsletter isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </div>
   );
