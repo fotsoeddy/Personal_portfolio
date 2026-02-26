@@ -365,4 +365,22 @@ export const testimonialData = [
     image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1974&auto=format&fit=crop',
     testimonial: 'The level of professionalism and technical depth Fotso brings is rare. He helped us automate our entire deployment pipeline, allowing us to ship features 3x faster than before.',
   },
+  {
+    name: 'David Wilson',
+    role: 'CTO at CloudScale',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop',
+    testimonial: 'Fotso\u2019s deep understanding of containerization and orchestration transformed our deployment strategy. We now have a resilient, self-healing infrastructure that handles traffic spikes with ease.',
+  },
+  {
+    name: 'Elena Rodriguez',
+    role: 'Lead Designer at CreativePulse',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop',
+    testimonial: 'It’s rare to find an engineer with such a strong eye for detail in both code and UI. Fotso translated our complex design visions into a high-performance Next.js application perfectly.',
+  },
+  {
+    name: 'James Mwangi',
+    role: 'Operations Director at LogisticX',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop',
+    testimonial: 'Automating our backend processes with Python and Redis reduced our processing time by 60%. Fotso delivered a solution that was not only stable but also very easy for our team to maintain.',
+  },
 ];
