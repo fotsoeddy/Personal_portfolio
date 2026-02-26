@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Newsletter from './components/Newsletter';
 import Services from './components/Services';
+import Testimonials from './components/Testimonials';
 import Work from './components/Work';
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
       <Work isDarkMode={isDarkMode} />
       <Blog isDarkMode={isDarkMode} />
       <Newsletter isDarkMode={isDarkMode} />
+      <Testimonials isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </>

@@ -346,3 +346,23 @@ export const toolsData = [
   assets.tailwind_color,
   assets.nextjs_color,
 ];
+export const testimonialData = [
+  {
+    name: 'Sarah Johnson',
+    role: 'CEO at Techflow',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop',
+    testimonial: 'Fotso is an exceptional engineer. He took our complex legacy system and transformed it into a modern, scalable platform. His DevOps expertise saved us months of infrastructure headaches.',
+  },
+  {
+    name: 'Michael Chen',
+    role: 'Project Manager at Hooyis',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop',
+    testimonial: "Working with Fotso was a breeze. He's not just a developer; he's a problem solver. The REST API he built for our mobile app is robust, well-documented, and incredibly fast.",
+  },
+  {
+    name: 'Amara Okafor',
+    role: 'Founder of AgriSmart',
+    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1974&auto=format&fit=crop',
+    testimonial: 'The level of professionalism and technical depth Fotso brings is rare. He helped us automate our entire deployment pipeline, allowing us to ship features 3x faster than before.',
+  },
+];
