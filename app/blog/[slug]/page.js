@@ -92,12 +92,12 @@ export default function BlogPost({ params: paramsPromise }) {
               </p>
               
               <p>
-                In today's fast-paced tech landscape, staying ahead means mastering both development and the operations that support it. This article explores the core concepts of <strong>{post.title}</strong> and how it impacts modern engineering workflows.
+                In today&apos;s fast-paced tech landscape, staying ahead means mastering both development and the operations that support it. This article explores the core concepts of <strong>{post.title}</strong> and how it impacts modern engineering workflows.
               </p>
 
               <h2 className='text-3xl font-bold mt-12 mb-6'>The Importance of {post.category}</h2>
               <p>
-                The shift towards {post.category.toLowerCase()} practices has revolutionized how we think about scale, reliability, and speed. Whether you're a frontend wizard or a backend architect, understanding these fundamentals is crucial for any developer in 2026.
+                The shift towards {post.category.toLowerCase()} practices has revolutionized how we think about scale, reliability, and speed. Whether you&apos;re a frontend wizard or a backend architect, understanding these fundamentals is crucial for any developer in 2026.
               </p>
 
               <div className={`p-8 rounded-2xl my-12 ${isDarkMode ? 'bg-[#1a0b2e] border border-white/5' : 'bg-purple-50 border border-purple-100'}`}>
@@ -111,7 +111,7 @@ export default function BlogPost({ params: paramsPromise }) {
               </div>
 
               <p>
-                As we continue to evolve our tools and methodologies, the boundary between "the code" and "the server" vanishes. We are moving towards a world where developers own the entire lifecycle of their applications.
+                As we continue to evolve our tools and methodologies, the boundary between &quot;the code&quot; and &quot;the server&quot; vanishes. We are moving towards a world where developers own the entire lifecycle of their applications.
               </p>
            </div>
 

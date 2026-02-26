@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Newsletter from '../components/Newsletter';
 
 export default function BlogPage() {
   const [isDarkMode, setIsDarkMode] = useState(false);
